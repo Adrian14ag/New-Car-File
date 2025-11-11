@@ -1,0 +1,143 @@
+package vehicles;  //Identify the package in which this class is located.
+
+import java.util.Scanner;  //Make Scanner available to the program.
+
+/**
+ * @(#) Car.java
+ * @author Adrian Garza
+ * @version 1.0 11/11/25 1:27 PM
+ *
+ * PROGRAM PURPOSE: Car program for creating car objects and their 
+ * relevant information.
+ */
+
+public class Car  //Code the class header for Car. 
+{
+   //******************************************************************
+   // Instance Fields
+   //******************************************************************
+   
+   private String vin;          //Code an instance field called vin that stores a car's vehicle identification number.
+   private String makeModel;    //Code an instance field for the make and model.
+   private Scanner input = new Scanner(System.in);  //Code the input Scanner object.
+
+
+   //******************************************************************
+   // Constructors
+   //******************************************************************
+   
+   public Car()  //Code the header for a default constructor.
+   {
+      vin = "";          //Initialize vin to an empty String.
+      makeModel = "";    //Initialize makeModel to an empty String.
+   }//END Default Constructor
+
+
+   public Car(String vin, String makeModel)  //Code the header for a constructor with parameter variables vin and makeModel in that order.
+   {
+      this.vin = vin;               //Assign parameter variable vin to its field.
+      this.makeModel = makeModel;   //Assign parameter variable makeModel to its field.
+   }//END 2nd Constructor
+
+
+   public Car(Car aCar)  //Code the header for a constructor with a Car parameter variable called aCar.
+   {
+      vin = aCar.vin;               //Assign the vin from aCar to the vin field.
+      makeModel = aCar.makeModel;   //Assign the makeModel from aCar to the makeModel field.
+   }//END 3rd Constructor
+
+
+   //******************************************************************
+   // Copy Method
+   //******************************************************************
+   
+   public Car copy()  //Code the header for a copy method that returns a Car object.
+   {
+      //Create a new Car object called carObject using the constructor 
+      //that accepts the vin and makeModel in that order.
+      Car carObject = new Car(vin, makeModel);
+      
+      return carObject;  //Return the object.
+   }//END Method
+
+
+   //******************************************************************
+   // Mutator and Accessor Methods
+   //******************************************************************
+   
+   public void setVin()  //Code an instance method header called setVin.
+   {
+      System.out.printf("%nEnter the car's VIN:  ");  //Prompt: "Enter the car's VIN:  "
+      vin = input.next();  //Read the vin from the keyboard.
+   }//END Method
+
+
+   public String getVin()  //Code an instance method header called getVin.
+   {
+      return vin;  //Return the proper field.
+   }//END Method
+
+
+   public void setMakeModel()  //Code an instance method header called setMakeModel.
+   {
+      System.out.printf("%nEnter the car's make and model:  ");  //Prompt: "Enter the car's make and model:  "
+      
+      input.nextLine();                     //Clear the input buffer after next().
+      makeModel = input.nextLine();         //Read the makeModel from the keyboard.
+      makeModel = makeModel.toLowerCase();  //Lowercase the value.
+      
+      makeModel = capitalize();  //Call the capitalize method that returns a String to makeModel.
+   }//END Method
+
+
+   public String getMakeModel()  //Code an instance method header called getMakeModel.
+   {
+      return makeModel;  //Return the proper field.
+   }//END Method
+
+
+   //******************************************************************
+   // Object State Method
+   //******************************************************************
+   
+   public String getObjectState()  //Code an instance method header called getObjectState that returns a formatted String.
+   {
+      //Declare a str variable and assign to it a formatted String:
+      //VIN:  XXXXXXXX
+      //Make & Model:  Xxxxxxxxx Xxxxxxxxx
+      String str = String.format("%nVIN:  %S"     // %S uppercases the VIN.
+                               + "%nMake & Model:  %s", vin, makeModel);
+      
+      return str;  //Return the local variable.
+   }//END Method
+
+
+   //******************************************************************
+   // Capitalize Method
+   //******************************************************************
+   
+   public String capitalize()  //Code an instance method header called capitalize that returns a properly capitalized make and model.
+   {
+      String alteredMakeModel = "";                 //Declare and initialize the alteredMakeModel variable.
+      
+      //Declare a 1D array called splitMakeModel and assign to it each 
+      //word in the field makeModel.
+      String[] splitMakeModel = makeModel.split(" ");
+      
+      //Code a for header using i as the loop-control variable, 
+      //test to the length of the array splitMakeModel.
+      for (int i = 0; i < splitMakeModel.length; i++)
+      {
+         //Go to a given array location, call the substring method to 
+         //extract the first character and uppercase it.
+         //Then call substring for the remaining characters and lowercase them.
+         alteredMakeModel += 
+            splitMakeModel[i].substring(0, 1).toUpperCase() +
+            splitMakeModel[i].substring(1).toLowerCase() +
+            " ";  //Insert a space as a String literal.
+      }//END for
+      
+      return alteredMakeModel.trim();  //Return the correct variable (trim to remove trailing space).
+   }//END Method
+
+}//END Class
