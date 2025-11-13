@@ -13,19 +13,11 @@ import java.util.Scanner;  //Make Scanner available to the program.
 
 public class Car  //Code the class header for Car. 
 {
-   //******************************************************************
-   // Instance Fields
-   //******************************************************************
    
    private String vin;          //Code an instance field called vin that stores a car's vehicle identification number.
    private String makeModel;    //Code an instance field for the make and model.
    private Scanner input = new Scanner(System.in);  //Code the input Scanner object.
 
-
-   //******************************************************************
-   // Constructors
-   //******************************************************************
-   
    public Car()  //Code the header for a default constructor.
    {
       vin = "";          //Initialize vin to an empty String.
@@ -45,11 +37,6 @@ public class Car  //Code the class header for Car.
       vin = aCar.vin;               //Assign the vin from aCar to the vin field.
       makeModel = aCar.makeModel;   //Assign the makeModel from aCar to the makeModel field.
    }//END 3rd Constructor
-
-
-   //******************************************************************
-   // Copy Method
-   //******************************************************************
    
    public Car copy()  //Code the header for a copy method that returns a Car object.
    {
@@ -59,11 +46,6 @@ public class Car  //Code the class header for Car.
       
       return carObject;  //Return the object.
    }//END Method
-
-
-   //******************************************************************
-   // Mutator and Accessor Methods
-   //******************************************************************
    
    public void setVin()  //Code an instance method header called setVin.
    {
@@ -95,11 +77,6 @@ public class Car  //Code the class header for Car.
       return makeModel;  //Return the proper field.
    }//END Method
 
-
-   //******************************************************************
-   // Object State Method
-   //******************************************************************
-   
    public String getObjectState()  //Code an instance method header called getObjectState that returns a formatted String.
    {
       //Declare a str variable and assign to it a formatted String:
@@ -110,11 +87,6 @@ public class Car  //Code the class header for Car.
       
       return str;  //Return the local variable.
    }//END Method
-
-
-   //******************************************************************
-   // Capitalize Method
-   //******************************************************************
    
    public String capitalize()  //Code an instance method header called capitalize that returns a properly capitalized make and model.
    {
